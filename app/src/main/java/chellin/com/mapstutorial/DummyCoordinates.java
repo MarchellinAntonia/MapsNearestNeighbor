@@ -19,12 +19,7 @@ import java.util.List;
  */
 
 public class DummyCoordinates extends AsyncTask<Object, String, String> {
-
-
-
-//    String googlePlacesData;
     GoogleMap mMap;
-//    String url;
     Location loc;
 
     @Override
@@ -33,9 +28,6 @@ public class DummyCoordinates extends AsyncTask<Object, String, String> {
             Log.d("Dummy Coordinate", "doInBackground entered");
             mMap = (GoogleMap) params[0];
             loc = (Location) params[1];
-//            url = (String) params[1];
-//            DownloadUrl downloadUrl = new DownloadUrl();
-//            googlePlacesData = downloadUrl.readUrl(url);
             Log.d("GooglePlacesReadTask", "doInBackground Exit");
         } catch (Exception e) {
             Log.d("GooglePlacesReadTask", e.toString());
@@ -75,13 +67,9 @@ public class DummyCoordinates extends AsyncTask<Object, String, String> {
             markerOptions.title(placeName);
 
             Distances pembanding = getNearestDistance(loc.getLatitude(), loc.getLongitude(), nearbyPlacesList);
-            System.out.println("lokasi = "+nearbyPlacesList.get(i).getPlace());
-            System.out.println("terdekat = "+pembanding.getName());
             if (nearbyPlacesList.get(i).getPlace().equals(pembanding.getName())){
-                System.out.println("masuk if");
                 markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE));
             }else{
-                System.out.println("masuk else");
                 markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED));
             }
             mMap.addMarker(markerOptions);
@@ -98,8 +86,6 @@ public class DummyCoordinates extends AsyncTask<Object, String, String> {
         for (int i=0;i<coord.size();i++){
             distances.add(new Distances(coord.get(i).getPlace(),(Math.sqrt((coord.get(i).getLatitude() - cuLat) * (coord.get(i).getLatitude() - cuLat) + (coord.get(i).getLongitude() - curLong) * (coord.get(i).getLongitude() - curLong)))));
         }
-
-
         return distances;
     }
 
@@ -112,7 +98,6 @@ public class DummyCoordinates extends AsyncTask<Object, String, String> {
                 nearest.setName(distances.get(i).getName());
             }
         }
-
         return nearest;
     }
 }

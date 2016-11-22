@@ -63,17 +63,6 @@ public class DummyActivity extends FragmentActivity implements OnMapReadyCallbac
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
-
-        ArrayList<Coordinates> x = new ArrayList<>();
-        x.add(new Coordinates("Suryalaya 4",-6.945321,107.623530));
-        x.add(new Coordinates("Balai sartika",-6.942530,107.625461));
-        x.add(new Coordinates("Bikasoga",-6.943531,107.624710));
-        x.add(new Coordinates("The Harvest",-6.944831,107.630074));
-        x.add(new Coordinates("Pizza Hut",-6.937013,107.623186));
-        x.add(new Coordinates("Sari Sunda",-6.948899,107.623422));
-        x.add(new Coordinates("LPKIA",-6.949900,107.624624));
-        x.add(new Coordinates("PT INTI",-6.938100,107.607243));
-
     }
 
 
@@ -95,8 +84,8 @@ public class DummyActivity extends FragmentActivity implements OnMapReadyCallbac
             mMap.setMyLocationEnabled(true);
         }
 
-        Button btnSchool = (Button) findViewById(R.id.btnCoor);
-        btnSchool.setOnClickListener(new View.OnClickListener() {
+        Button btnCoord = (Button) findViewById(R.id.btnCoor);
+        btnCoord.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Log.d("onClick", "Button is Clicked");
@@ -166,7 +155,6 @@ public class DummyActivity extends FragmentActivity implements OnMapReadyCallbac
         if (mGoogleApiClient != null) {
             LocationServices.FusedLocationApi.removeLocationUpdates(mGoogleApiClient, this);
         }
-        addMarker();
 
     }
 
@@ -240,42 +228,6 @@ public class DummyActivity extends FragmentActivity implements OnMapReadyCallbac
             // You can add here other case statements according to your requirement.
         }
     }
-
-    private String getUrl(double latitude, double longitude, String nearbyPlace) {
-
-        StringBuilder googlePlacesUrl = new StringBuilder("https://maps.googleapis.com/maps/api/place/nearbysearch/json?");
-        googlePlacesUrl.append("location=" + latitude + "," + longitude);
-        googlePlacesUrl.append("&radius=" + PROXIMITY_RADIUS);
-        googlePlacesUrl.append("&types=" + nearbyPlace);
-        googlePlacesUrl.append("&sensor=true");
-        googlePlacesUrl.append("&key=" + "AIzaSyBt7_eLLSV66gAbwMPvv8bqp5b9QklPYzc");
-        Log.d("getUrl", googlePlacesUrl.toString());
-        return (googlePlacesUrl.toString());
-    }
-
-    private void addMarker() {
-        MarkerOptions options = new MarkerOptions();
-
-        // following four lines requires 'Google Maps Android API Utility Library'
-        // https://developers.google.com/maps/documentation/android/utility/
-        // I have used this to display the time as title for location markers
-        // you can safely comment the following four lines but for this info
-//        IconGenerator iconFactory = new IconGenerator(this);
-//        iconFactory.setStyle(IconGenerator.STYLE_PURPLE);
-//        options.icon(BitmapDescriptorFactory.fromBitmap(iconFactory.makeIcon(mLastUpdateTime)));
-//        options.anchor(iconFactory.getAnchorU(), iconFactory.getAnchorV());
-
-        LatLng currentLatLng = new LatLng(mLastLocation.getLatitude(), mLastLocation.getLongitude());
-        options.position(currentLatLng);
-        Marker mapMarker = mMap.addMarker(options);
-        long atTime = mLastLocation.getTime();
-        String mLastUpdateTime = DateFormat.getTimeInstance().format(new Date(atTime));
-        mapMarker.setTitle(mLastUpdateTime);
-        Log.d("", "Marker added.............................");
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(currentLatLng, 15));
-        Log.d("", "Zoom done.............................");
-    }
-
 
 
 
