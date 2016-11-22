@@ -55,8 +55,8 @@ private static Distances getNearestDistance(double curLat, double curLong, Array
 
 ## Screenshot
 * first action is locate current location <br />
-![alt tag](https://cloud.githubusercontent.com/assets/12492522/20509404/28e53c0e-b09b-11e6-89b7-c3b89b3c23ac.png)
+<img src="https://cloud.githubusercontent.com/assets/12492522/20509404/28e53c0e-b09b-11e6-89b7-c3b89b3c23ac.png" width="300">
 <br />
 * when nearby coordinate button is clicked, it show all coordinates in ArrayList and mark the nearest one with blue marker <br />
-![alt tag](https://cloud.githubusercontent.com/assets/12492522/20509405/2916c77e-b09b-11e6-92f9-54c90deedbc2.png)
+<img src="https://cloud.githubusercontent.com/assets/12492522/20509405/2916c77e-b09b-11e6-92f9-54c90deedbc2.png" width="300">
 
