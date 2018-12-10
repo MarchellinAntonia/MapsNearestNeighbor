@@ -1,6 +1,6 @@
 # MapsNearestNeighbor
 
-Learn how to build Android Apps with google maps that calculate nearest coordinate (Android)
+Build Android Apps with google maps that calculate nearest coordinate (Android)
 
 ## Getting Started
 
